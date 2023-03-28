@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert into employee" author="niyaz">
+        <insert tableName="employee">
+            <column name="id" value="1"/>
+            <column name="access_token" value="exit"/>
+            <column name="login" value="John"/>
+            <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
+            <column name="role" value="courier"/>
+            <column name="status" value="assigned"/>
+            <column name="address" value="Prospekt Mira, 119, Moskva, Russia, 129128"/>
+            <column name="latitude" value="55.8442483697085"/>
+            <column name="longitude" value="37.66859401970849"/>
+            <column name="created_on" value="2023-03-25 17:14:55.644861"/>
+        </insert>
+        <insert tableName="employee">
+            <column name="id" value="2"/>
+            <column name="access_token" value="exit"/>
+            <column name="login" value="Nick"/>
+            <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
+            <column name="role" value="courier"/>
+            <column name="status" value="free"/>
+            <column name="address" value="Khovanskaya Ulitsa, 22, Moskva, Russia, 129223"/>
+            <column name="latitude" value="55.8290052"/>
+            <column name="longitude" value="37.62295659999999"/>
+            <column name="created_on" value="2023-03-24 17:14:55.644861"/>
+        </insert>
+        <insert tableName="employee">
+            <column name="id" value="3"/>
+            <column name="access_token" value="exit"/>
+            <column name="login" value="Oskar"/>
+            <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
+            <column name="role" value="courier"/>
+            <column name="status" value="free"/>
+            <column name="address" value="Yaroslavskaya Ulitsa, 10к4, Moskva, Russia, 129366"/>
+            <column name="latitude" value="55.8290052"/>
+            <column name="longitude" value="37.64904"/>
+            <column name="created_on" value="2023-03-21 17:14:55.644861"/>
+        </insert>
+        <insert tableName="employee">
+            <column name="id" value="4"/>
+            <column name="access_token" value="exit"/>
+            <column name="login" value="Maks"/>
+            <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
+            <column name="role" value="courier"/>
+            <column name="status" value="free"/>
+            <column name="address" value="Ol'khovskiy Tupik, Moskva, Russia"/>
+            <column name="latitude" value="55.7734303"/>
+            <column name="longitude" value="37.6616177"/>
+            <column name="created_on" value="2023-03-23 14:14:55.644861"/>
+        </insert>
+        <insert tableName="employee">
+            <column name="id" value="5"/>
+            <column name="access_token" value="exit"/>
+            <column name="login" value="Ilgar"/>
+            <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
+            <column name="role" value="courier"/>
+            <column name="status" value="free"/>
+            <column name="address" value="Radio Ulitsa, 17, Moskva, Russia, 105005"/>
+            <column name="latitude" value="55.7635212"/>
+            <column name="longitude" value="37.6782422"/>
+            <column name="created_on" value="2023-03-22 12:14:55.644861"/>
+        </insert>
+        <insert tableName="employee">
+            <column name="id" value="6"/>
+            <column name="access_token" value="exit"/>
+            <column name="login" value="Admin"/>
+            <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
+            <column name="role" value="admin"/>
+            <column name="status" value="free"/>
+            <column name="address" value="Krasnokazarmennaya Ulitsa, 4/1 строение 10, Moskva, Russia, 111033"/>
+            <column name="latitude" value="55.757873"/>
+            <column name="longitude" value="37.69117800000001"/>
+            <column name="created_on" value="2023-03-20 12:14:55.644861"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,105 @@
+version: "3.7"
+services:
+
+  config-service:
+    image: config-service:3.0.4
+    ports:
+      - "8888:8888"
+
+  discovery-service:
+    image: discovery-service:3.0.4
+    ports:
+      - "8000:8000"
+    links:
+      - config-service
+
+  db_employee:
+    container_name: guava_pay_employee_container
+    image: postgres:13.10-bullseye
+    restart: always
+    ports:
+      - 5442:5432
+    environment:
+      POSTGRES_DB: "guava_pay_employee_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - ./postgres:/data/postgres
+
+  employee-service:
+    image: employee-service:3.0.4
+    ports:
+      - "8002"
+    links:
+      - config-service
+      - discovery-service
+      - db_employee
+
+
+  db_order:
+    container_name: guava_pay_order_container
+    image: postgres:alpine
+    restart: always
+    ports:
+      - 5441:5432
+    environment:
+      POSTGRES_DB: "guava_pay_order_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - ./postgres:/data/postgres
+
+
+  order-service:
+    image: order-service:3.0.4
+    ports:
+      - "8003"
+    links:
+      - config-service
+      - discovery-service
+      - db_employee
+      - employee-service
+      - db_order
+
+
+  db_user:
+    container_name: guava_pay_user_container
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5440:5432
+    environment:
+      POSTGRES_DB: "guava_pay_user_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - ./postgres:/data/postgres
+
+
+  user-service:
+    image: user-service:3.0.4
+    ports:
+      - "8004"
+    links:
+      - config-service
+      - discovery-service
+      - db_employee
+      - employee-service
+      - db_order
+      - order-service
+      - db_user
+
+
+  gateway-service:
+    image: gateway-service:3.0.4
+    ports:
+      - "8001:8001"
+    links:
+      - config-service
+      - discovery-service
+      - db_employee
+      - employee-service
+      - db_order
+      - order-service
+      - db_user
+      - user-service

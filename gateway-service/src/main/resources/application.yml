@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: "optional:configserver:http://localhost:8888"
+#  config:
+#    import: "optional:configserver:http://192.168.99.100:8888"
+
+jwt:
+  secret: BvPHGM8C0ia4uOuxxqPD5DTbWC9F9TWvPStp3pb7ARo0oK2mJ3pd3YG4lxA9i8bj6OTbadwezxgeEByY
+  expiration: 86400

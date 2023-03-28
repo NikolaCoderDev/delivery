@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create_table_users" author="niyaz">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="login" type="varchar(64)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="role" type="varchar(64)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="access_token" type="varchar(255)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="created_on" type="varchar(255)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

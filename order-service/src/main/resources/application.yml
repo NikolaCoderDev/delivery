@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: order-service
+  config:
+#    import: "optional:configserver:http://192.168.99.100:8888"
+    import: "optional:configserver:http://localhost:8888"
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://192.168.99.100:5441/guava_pay_order_db
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
+    default-schema: public
+
+jwt:
+  secret: BvPHGM8C0ia4uOuxxqPD5DTbWC9F9TWvPStp3pb7ARo0oK2mJ3pd3YG4lxA9i8bj6OTbadwezxgeEByY
+  expiration: 86400
+
+api_key: AIzaSyDKfusCcGmhvt82rWv7GKzminYVEZJd9TU

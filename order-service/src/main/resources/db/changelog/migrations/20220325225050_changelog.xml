@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert into orders" author="niyaz">
+        <insert tableName="orders">
+            <column name="id" value="1"/>
+            <column name="delivery_address" value="Волгоградский пр-т., 128, Moskva, Russia, 109439"/>
+            <column name="delivery_latitude" value="55.7019347"/>
+            <column name="delivery_longitude" value="37.7821256"/>
+            <column name="employee_id" value="1"/>
+            <column name="status" value="assigned"/>
+            <column name="title" value="iphone"/>
+            <column name="user_id" value="1"/>
+            <column name="created_on" value="2023-03-25 17:14:55.644861"/>
+            <column name="description" value="Some description here"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="2"/>
+            <column name="delivery_address" value="Волгоградский пр-т., 109 корпус 6, Moskva, Russia, 109117"/>
+            <column name="delivery_latitude" value="55.70902359999999"/>
+            <column name="delivery_longitude" value="37.7605757"/>
+            <column name="employee_id" value="1"/>
+            <column name="status" value="assigned"/>
+            <column name="title" value="sushi"/>
+            <column name="user_id" value="2"/>
+            <column name="created_on" value="2023-03-18 17:14:55.644861"/>
+            <column name="description" value="Some description here"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="3"/>
+            <column name="delivery_address" value="Shosse Frezer, Moskva, Russia"/>
+            <column name="delivery_latitude" value="55.7386159"/>
+            <column name="delivery_longitude" value="37.7355016"/>
+            <column name="employee_id" value="1"/>
+            <column name="status" value="assigned"/>
+            <column name="title" value="ipad"/>
+            <column name="user_id" value="3"/>
+            <column name="created_on" value="2023-03-11 17:14:55.644861"/>
+            <column name="description" value="Some description here"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="4"/>
+            <column name="delivery_address" value="Prospekt Mira, 119, Moskva, Russia, 129128"/>
+            <column name="delivery_latitude" value="55.8442483697085"/>
+            <column name="delivery_longitude" value="37.66859401970849"/>
+            <column name="employee_id" value="2"/>
+            <column name="status" value="assigned"/>
+            <column name="title" value="notepad"/>
+            <column name="user_id" value="3"/>
+            <column name="created_on" value="2023-03-11 17:14:55.644861"/>
+            <column name="description" value="Some description here"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="5"/>
+            <column name="delivery_address" value="Shosse Entuziastov, Shosse Entuziastov, 34, Moskva, Russia, 105118"/>
+            <column name="delivery_latitude" value="55.757654"/>
+            <column name="delivery_longitude" value="37.749847"/>
+            <column name="employee_id" value="1"/>
+            <column name="status" value="canceled"/>
+            <column name="title" value="book"/>
+            <column name="user_id" value="2"/>
+            <column name="created_on" value="2023-03-18 17:14:55.644861"/>
+            <column name="description" value="Some description here"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="id" value="6"/>
+            <column name="delivery_address" value="Krasnokazarmennaya Ulitsa, Moskva, Russia"/>
+            <column name="delivery_latitude" value="55.7573749"/>
+            <column name="delivery_longitude" value="37.6992149"/>
+            <column name="employee_id" value="4"/>
+            <column name="status" value="delivered"/>
+            <column name="title" value="book"/>
+            <column name="user_id" value="4"/>
+            <column name="created_on" value="2023-02-18 17:14:55.644861"/>
+            <column name="description" value="Some description here"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

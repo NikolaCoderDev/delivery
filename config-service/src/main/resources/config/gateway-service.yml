@@ -1,0 +1,60 @@
+server:
+  port: 8001
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://192.168.99.100:8000/eureka/
+
+logging:
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%X{traceId:-},%X{spanId:-}] ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+spring:
+  cloud:
+    gateway:
+#      default-filters:
+#        - name: JwtAuthenticationFilter
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: employee-service
+          uri: lb://employee-service
+          predicates:
+            - Path=/employee/**
+          filters:
+            - RewritePath=/employee/(?<path>.*), /$\{path}
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+          filters:
+            - RewritePath=/user/(?<path>.*), /$\{path}
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+          filters:
+            - RewritePath=/order/(?<path>.*), /$\{path}
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: employee
+        url: /v3/api-docs/employee
+      - name: user
+        url: /v3/api-docs/user
+      - name: order
+        url: /v3/api-docs/order
