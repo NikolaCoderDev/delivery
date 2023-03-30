@@ -1,13 +1,14 @@
 package com.guavaPay.employeeservice.dto;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class RegEmployeeDto {
 
     private String login;
     private String role;
     private String password;
+    private String number;
 }

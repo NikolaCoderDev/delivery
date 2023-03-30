@@ -3,6 +3,7 @@ package com.guavaPay.userservice.service;
 import com.guavaPay.userservice.config.jwt.JwtUtil;
 import com.guavaPay.userservice.config.security.UserDetailsServiceImpl;
 import com.guavaPay.userservice.dto.UserDto;
+import com.guavaPay.userservice.dto.UserDtoReq;
 import com.guavaPay.userservice.dto.mapper.Mapper;
 import com.guavaPay.userservice.model.User;
 import com.guavaPay.userservice.repository.UserRepository;
@@ -31,24 +32,26 @@ public class UserService {
     private final Mapper mapper;
     private final JwtUtil jwtUtil;
 
-    public User register(User user) {
+    public User register(UserDtoReq user) {
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
-        user.setRole("user");
-        return userRepository.save(user);
+
+        User userSave = mapper.mapFromUserDtoReq(user);
+
+        return userRepository.save(userSave);
     }
 
-    public UserDto login(User user) {
+    public UserDto login(UserDtoReq user) {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword()));
 
         if (authentication.isAuthenticated()) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(user.getLogin());
             User userId = userRepository.getByLogin(user.getLogin());
-            String token = jwtUtil.generate(userDetails, user, userId, "ACCESS");
-            user.setAccessToken(token);
-            userRepository.updateAccessTokenByLogin(user.getAccessToken(), user.getLogin());
-            user.setAccessToken(token);
-            return mapper.mapToUserDto(user);
+            String token = jwtUtil.generate(userDetails, userId, userId, "ACCESS");
+            userId.setAccessToken(token);
+            userRepository.updateAccessTokenByLogin(userId.getAccessToken(), user.getLogin());
+            userId.setAccessToken(token);
+            return mapper.mapToUserDto(userId);
         }
         return null;
     }

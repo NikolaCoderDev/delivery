@@ -5,9 +5,10 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="create_table_employee" author="niyaz">
+
         <createTable tableName="employee">
-            <column autoIncrement="true" name="id" type="bigint">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true" />
             </column>
             <column name="login" type="varchar(64)">
                 <constraints nullable="false" unique="true"/>
@@ -15,26 +16,32 @@
             <column name="role" type="varchar(64)">
                 <constraints nullable="false" unique="false"/>
             </column>
-            <column name="access_token" type="varchar(255)">
-                <constraints nullable="false" unique="false"/>
+            <column name="access_token" type="varchar(1500)">
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="password" type="varchar(255)">
                 <constraints nullable="false" unique="false"/>
             </column>
             <column name="status" type="varchar(255)">
-                <constraints nullable="false" unique="false"/>
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="latitude" type="varchar(255)">
-                <constraints nullable="false" unique="false"/>
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="longitude" type="varchar(255)">
-                <constraints nullable="false" unique="false"/>
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="address" type="varchar(255)">
-                <constraints nullable="false" unique="false"/>
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="created_on" type="varchar(255)">
-                <constraints nullable="false" unique="false"/>
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="number" type="varchar(255)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="ip_address" type="varchar(255)">
+                <constraints nullable="true" unique="false"/>
             </column>
         </createTable>
     </changeSet>

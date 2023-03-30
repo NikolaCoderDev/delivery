@@ -1,26 +1,22 @@
 package com.guavaPay.employeeservice.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
+import com.guavaPay.employeeservice.dto.IpDto;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "employee")
 public class Employee {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String login;
     private String role;
@@ -32,6 +28,8 @@ public class Employee {
     private String longitude;
     private String address;
     private LocalDateTime createdOn;
+    private String number;
+    private String ip_address;
 
     @PrePersist
     public void prePersist() {

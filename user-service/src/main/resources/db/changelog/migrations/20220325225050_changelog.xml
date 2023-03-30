@@ -6,50 +6,44 @@
 
     <changeSet id="insert into users" author="niyaz">
         <insert tableName="users">
-            <column name="id" value="1"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Georgi"/>
-            <column name="password" value="$2a$10$lPbSFYZ6QqvEG6coFMIGL.1hsWbPIAYIXkzh.3uDwKhQzRhSpWfH2"/>
+            <column name="password" value="$2a$10$sgM7xiXphR6GcXgB8xTr2u3c6T.KSF5/uSJgBWwIcnLV5ozHsg/ZS"/>
             <column name="role" value="user"/>
             <column name="created_on" value="2023-03-20 17:14:55.644861"/>
         </insert>
         <insert tableName="users">
-            <column name="id" value="2"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Obama"/>
-            <column name="password" value="$2a$10$lPbSFYZ6QqvEG6coFMIGL.1hsWbPIAYIXkzh.3uDwKhQzRhSpWfH2"/>
+            <column name="password" value="$2a$10$sgM7xiXphR6GcXgB8xTr2u3c6T.KSF5/uSJgBWwIcnLV5ozHsg/ZS"/>
             <column name="role" value="user"/>
             <column name="created_on" value="2023-03-19 17:14:55.644861"/>
         </insert>
         <insert tableName="users">
-            <column name="id" value="3"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Amirzhan"/>
-            <column name="password" value="$2a$10$lPbSFYZ6QqvEG6coFMIGL.1hsWbPIAYIXkzh.3uDwKhQzRhSpWfH2"/>
+            <column name="password" value="$2a$10$sgM7xiXphR6GcXgB8xTr2u3c6T.KSF5/uSJgBWwIcnLV5ozHsg/ZS"/>
             <column name="role" value="user"/>
             <column name="created_on" value="2023-03-21 17:14:55.644861"/>
         </insert>
         <insert tableName="users">
-            <column name="id" value="4"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Vandam"/>
-            <column name="password" value="$2a$10$lPbSFYZ6QqvEG6coFMIGL.1hsWbPIAYIXkzh.3uDwKhQzRhSpWfH2"/>
+            <column name="password" value="$2a$10$sgM7xiXphR6GcXgB8xTr2u3c6T.KSF5/uSJgBWwIcnLV5ozHsg/ZS"/>
             <column name="role" value="user"/>
             <column name="created_on" value="2023-03-21 17:14:55.644861"/>
         </insert>
         <insert tableName="users">
-            <column name="id" value="5"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Putin"/>
-            <column name="password" value="$2a$10$lPbSFYZ6QqvEG6coFMIGL.1hsWbPIAYIXkzh.3uDwKhQzRhSpWfH2"/>
+            <column name="password" value="$2a$10$sgM7xiXphR6GcXgB8xTr2u3c6T.KSF5/uSJgBWwIcnLV5ozHsg/ZS"/>
             <column name="role" value="user"/>
             <column name="created_on" value="2023-03-21 17:14:55.644861"/>
         </insert>
         <insert tableName="users">
-            <column name="id" value="6"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Bill"/>
-            <column name="password" value="$2a$10$lPbSFYZ6QqvEG6coFMIGL.1hsWbPIAYIXkzh.3uDwKhQzRhSpWfH2"/>
+            <column name="password" value="$2a$10$sgM7xiXphR6GcXgB8xTr2u3c6T.KSF5/uSJgBWwIcnLV5ozHsg/ZS"/>
             <column name="role" value="user"/>
             <column name="created_on" value="2023-03-23 17:14:55.644861"/>
         </insert>

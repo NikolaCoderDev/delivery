@@ -13,18 +13,6 @@ public class GpsRestTemplate {
     @Value("${api_key}")
     private String API_KEY;
 
-    public Response getByLatLng(String latLng) {
-        UriComponents uri = UriComponentsBuilder.newInstance()
-                .scheme("https")
-                .host("maps.googleapis.com")
-                .path("maps/api/geocode/json")
-                .queryParam("key", API_KEY)
-                .queryParam("latlng", latLng)
-                .build();
-
-        return new RestTemplate().getForEntity(uri.toString(), Response.class).getBody();
-    }
-
     public Response getByAddress(String address) {
         UriComponents uri = UriComponentsBuilder.newInstance()
                 .scheme("https")

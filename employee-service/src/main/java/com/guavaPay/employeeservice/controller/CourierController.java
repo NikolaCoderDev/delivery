@@ -1,6 +1,8 @@
 package com.guavaPay.employeeservice.controller;
 
 import com.guavaPay.employeeservice.client.feignClient.OrderFeignClient;
+import com.guavaPay.employeeservice.dto.EmployeeDto;
+import com.guavaPay.employeeservice.dto.orderDto.OrderDto;
 import com.guavaPay.employeeservice.dto.orderDto.UserOrdersDto;
 import com.guavaPay.employeeservice.service.EmployeeService;
 import com.guavaPay.employeeservice.service.OrderService;
@@ -14,18 +16,12 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@Tag(name = "Courier controller", description = "")
+@Tag(name = "Courier controller")
 public class CourierController {
 
     private final OrderFeignClient orderFeignClient;
     private final EmployeeService employeeService;
     private final OrderService orderService;
-
-    @GetMapping("/coordinates")
-    @Operation(summary = "Update courier coordinates. [courier permission]", description = "Put token here.")
-    public void updateCourierCoordinates(@RequestParam String latlng, @RequestHeader String authorization) {
-        employeeService.updateCourierCoordinates(latlng, authorization);
-    }
 
     @PutMapping("/accept/{orderId}")
     @Operation(summary = "Accept order. [courier permission]", description = "Put token here.")
@@ -36,7 +32,19 @@ public class CourierController {
 
     @GetMapping("/myTasks")
     @Operation(summary = "View my orders. [courier permission]", description = "View all orders for the delivery of parcels that are assigned to me.")
-    public List<UserOrdersDto> getOrdersByCourierId() {
+    public List<OrderDto> getOrdersByCourierId() {
         return orderService.getOrdersByCourierId();
+    }
+
+    @GetMapping("/details")
+    @Operation(summary = "View order details. [courier permission]")
+    public List<UserOrdersDto> getOrderDetailsByCourierId() {
+        return orderService.getOrderDetailsByCourierId();
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get courier by id.")
+    public EmployeeDto getCourierById(@PathVariable String id) {
+        return employeeService.getById(id);
     }
 }

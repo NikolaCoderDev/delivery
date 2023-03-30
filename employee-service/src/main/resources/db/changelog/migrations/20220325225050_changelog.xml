@@ -6,7 +6,6 @@
 
     <changeSet id="insert into employee" author="niyaz">
         <insert tableName="employee">
-            <column name="id" value="1"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="John"/>
             <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
@@ -16,9 +15,9 @@
             <column name="latitude" value="55.8442483697085"/>
             <column name="longitude" value="37.66859401970849"/>
             <column name="created_on" value="2023-03-25 17:14:55.644861"/>
+            <column name="number" value="+79681212364"/>
         </insert>
         <insert tableName="employee">
-            <column name="id" value="2"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Nick"/>
             <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
@@ -28,9 +27,9 @@
             <column name="latitude" value="55.8290052"/>
             <column name="longitude" value="37.62295659999999"/>
             <column name="created_on" value="2023-03-24 17:14:55.644861"/>
+            <column name="number" value="+79681212362"/>
         </insert>
         <insert tableName="employee">
-            <column name="id" value="3"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Oskar"/>
             <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
@@ -40,9 +39,9 @@
             <column name="latitude" value="55.8290052"/>
             <column name="longitude" value="37.64904"/>
             <column name="created_on" value="2023-03-21 17:14:55.644861"/>
+            <column name="number" value="+79681212361"/>
         </insert>
         <insert tableName="employee">
-            <column name="id" value="4"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Maks"/>
             <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
@@ -52,9 +51,9 @@
             <column name="latitude" value="55.7734303"/>
             <column name="longitude" value="37.6616177"/>
             <column name="created_on" value="2023-03-23 14:14:55.644861"/>
+            <column name="number" value="+79681612364"/>
         </insert>
         <insert tableName="employee">
-            <column name="id" value="5"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Ilgar"/>
             <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
@@ -64,9 +63,9 @@
             <column name="latitude" value="55.7635212"/>
             <column name="longitude" value="37.6782422"/>
             <column name="created_on" value="2023-03-22 12:14:55.644861"/>
+            <column name="number" value="+79681212369"/>
         </insert>
         <insert tableName="employee">
-            <column name="id" value="6"/>
             <column name="access_token" value="exit"/>
             <column name="login" value="Admin"/>
             <column name="password" value="$2a$10$Z.SWKmIb35mdvnlo2Xpt/OkASZ0/KyguKrz550SWVQ61uYSsMyYKC"/>
@@ -76,6 +75,7 @@
             <column name="latitude" value="55.757873"/>
             <column name="longitude" value="37.69117800000001"/>
             <column name="created_on" value="2023-03-20 12:14:55.644861"/>
+            <column name="number" value="+79681212368"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

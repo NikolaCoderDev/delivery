@@ -9,27 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Mapper {
 
-    public Employee mapToEmployee(LoginEmployeeDtoRes dto) {
-
-        Long id = null;
-
-        if (dto.getId() != null) {
-            id = Long.valueOf(dto.getId());
-        }
-
-        return Employee.builder()
-                .id(id)
-                .role(dto.getRole())
-                .login(dto.getLogin())
-                .accessToken(dto.getAccessToken())
-                .build();
-    }
-
-    public LoginEmployeeDtoRes mapToAuthEmployeeDto(Employee user) {
+    public LoginEmployeeDtoRes mapToAuthEmployeeDto(Employee employee) {
         return LoginEmployeeDtoRes.builder()
-                .login(user.getLogin())
-                .accessToken(user.getAccessToken())
-                .role(user.getRole())
+                .login(employee.getLogin())
+                .accessToken(employee.getAccessToken())
+                .role(employee.getRole())
                 .build();
     }
 
@@ -42,14 +26,23 @@ public class Mapper {
                 .longitude(employee.getLatitude())
                 .latitude(employee.getLatitude())
                 .address(employee.getAddress())
+                .number(employee.getNumber())
                 .build();
     }
 
     public Employee mapToEmployee(RegEmployeeDto regEmployeeDto) {
-        return Employee.builder()
-                .login(regEmployeeDto.getLogin())
-                .role(regEmployeeDto.getRole())
-                .password(regEmployeeDto.getPassword())
-                .build();
+        Employee employee = new Employee();
+        employee.setLogin(regEmployeeDto.getLogin());
+        employee.setRole(regEmployeeDto.getRole());
+        employee.setPassword(regEmployeeDto.getPassword());
+        employee.setNumber(regEmployeeDto.getNumber());
+        return employee;
+    }
+
+    public Employee mapToEmployee(LoginEmployeeDtoRes loginEmployeeDtoRes) {
+        Employee employee = new Employee();
+        employee.setLogin(loginEmployeeDtoRes.getLogin());
+        employee.setRole(loginEmployeeDtoRes.getRole());
+        return employee;
     }
 }

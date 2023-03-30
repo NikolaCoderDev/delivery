@@ -6,8 +6,8 @@
 
     <changeSet id="create_table_users" author="niyaz">
         <createTable tableName="users">
-            <column autoIncrement="true" name="id" type="bigint">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true" />
             </column>
             <column name="login" type="varchar(64)">
                 <constraints nullable="false" unique="true"/>
@@ -15,8 +15,8 @@
             <column name="role" type="varchar(64)">
                 <constraints nullable="false" unique="false"/>
             </column>
-            <column name="access_token" type="varchar(255)">
-                <constraints nullable="false" unique="false"/>
+            <column name="access_token" type="varchar(1500)">
+                <constraints nullable="true" unique="false"/>
             </column>
             <column name="password" type="varchar(255)">
                 <constraints nullable="false" unique="false"/>

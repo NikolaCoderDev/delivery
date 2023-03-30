@@ -3,7 +3,6 @@ spring:
     name: gateway-service
   config:
     import: "optional:configserver:http://localhost:8888"
-#  config:
 #    import: "optional:configserver:http://192.168.99.100:8888"
 
 jwt:

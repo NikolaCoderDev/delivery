@@ -18,4 +18,5 @@ public class EmployeeDto {
     private String latitude;
     private String longitude;
     private String address;
+    private String number;
 }

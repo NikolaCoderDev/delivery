@@ -1,5 +1,6 @@
 package com.guavaPay.employeeservice.service;
 
+import com.guavaPay.employeeservice.client.feignClient.EmployeeFeignClient;
 import com.guavaPay.employeeservice.config.jwt.JwtUtil;
 import com.guavaPay.employeeservice.config.security.EmployeeDetailsServiceImpl;
 import com.guavaPay.employeeservice.dto.LoginEmployeeDto;
@@ -26,6 +27,7 @@ public class AuthEmployeeService {
     private final EmployeeDetailsServiceImpl employeeDetailsService;
     private final AuthenticationManager authenticationManager;
     private final EmployeeRepository employeeRepository;
+    private final EmployeeFeignClient employeeFeignClient;
     private final Mapper mapper;
     private final JwtUtil jwtUtil;
 
@@ -33,8 +35,10 @@ public class AuthEmployeeService {
     public String register(RegEmployeeDto regEmployeeDto) {
         Employee res = employeeRepository.getByLogin(regEmployeeDto.getLogin());
         if (res == null) {
+            String ip = employeeFeignClient.getIpAddress().getIp();
             regEmployeeDto.setPassword(BCrypt.hashpw(regEmployeeDto.getPassword(), BCrypt.gensalt()));
             Employee employee = mapper.mapToEmployee(regEmployeeDto);
+            employee.setIp_address(ip);
             employeeRepository.save(employee);
             return "Created";
         }
@@ -49,11 +53,9 @@ public class AuthEmployeeService {
             UserDetails userDetails = employeeDetailsService.loadUserByUsername(loginEmployeeDto.getLogin());
             Employee employeeId = employeeRepository.getByLogin(loginEmployeeDto.getLogin());
 
-            Employee employee = Employee
-                    .builder()
-                    .login(loginEmployeeDto.getLogin())
-                    .password(loginEmployeeDto.getPassword())
-                    .build();
+            Employee employee = new Employee();
+            employee.setLogin(loginEmployeeDto.getLogin());
+            employee.setPassword(loginEmployeeDto.getPassword());
 
             String token = jwtUtil.generate(userDetails, employee, employeeId, "ACCESS");
             employee.setAccessToken(token);

@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: native
   application:
     name: discovery-service
   config:

@@ -1,10 +1,10 @@
 package com.guavaPay.userservice.dto.orderDto;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class OrderDtoRequest {
 
     private String title;

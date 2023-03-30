@@ -1,6 +1,7 @@
 package com.guavaPay.userservice.controller;
 
 import com.guavaPay.userservice.dto.UserDto;
+import com.guavaPay.userservice.dto.UserDtoReq;
 import com.guavaPay.userservice.model.User;
 import com.guavaPay.userservice.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,13 +20,13 @@ public class UserController {
 
     @Operation(summary = "Register without token.", description = "You may register here without token.")
     @RequestMapping(path="/register", method = RequestMethod.POST)
-    public User register(@RequestBody User user) {
+    public User register(@RequestBody UserDtoReq user) {
         return userService.register(user);
     }
 
     @Operation(summary = "Login without token.", description = "You should login and get token here.")
     @RequestMapping(path="/login", method = RequestMethod.POST)
-    public UserDto login(@RequestBody User user) {
+    public UserDto login(@RequestBody UserDtoReq user) {
         return userService.login(user);
     }
 
@@ -36,6 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get user by id. [admin, courier permission]")
     public UserDto getById(@PathVariable("id") String id) {
         return userService.getById(id);
     }

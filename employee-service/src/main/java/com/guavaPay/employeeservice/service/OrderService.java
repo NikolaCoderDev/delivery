@@ -5,6 +5,7 @@ import com.guavaPay.employeeservice.client.feignClient.UserFeignClient;
 import com.guavaPay.employeeservice.config.jwt.JwtUtil;
 import com.guavaPay.employeeservice.dto.EmployeeDto;
 import com.guavaPay.employeeservice.dto.LoginEmployeeDtoRes;
+import com.guavaPay.employeeservice.dto.orderDto.OrderDto;
 import com.guavaPay.employeeservice.dto.orderDto.UserOrdersDto;
 import com.guavaPay.employeeservice.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
@@ -27,19 +28,23 @@ public class OrderService {
 
     private final JwtUtil jwtUtil;
 
-    public List<UserOrdersDto> getOrdersByCourierId() {
-         return orderFeignClient.getOrdersByCourierId().stream().map(o -> UserOrdersDto.builder()
-                 .id(o.getId())
-                 .userDto(userFeignClient.getUserById(o.getUserId()))
-                 .employee(employeeService.getById(o.getEmployeeId()))
-                 .status(o.getStatus())
-                 .title(o.getTitle())
-                 .deliveryLatitude(o.getDeliveryLatitude())
-                 .deliveryLongitude(o.getDeliveryLongitude())
-                 .deliveryAddress(o.getDeliveryAddress())
-                 .description(o.getDescription())
-                 .build())
-                 .toList();
+    public List<OrderDto> getOrdersByCourierId() {
+         return orderFeignClient.getOrdersByCourierId();
+    }
+
+    public List<UserOrdersDto> getOrderDetailsByCourierId() {
+        return orderFeignClient.getOrdersByCourierId().stream().map(o -> UserOrdersDto.builder()
+                        .id(o.getId())
+                        .userDto(userFeignClient.getUserById(o.getUserId()))
+                        .employee(employeeService.getById(o.getEmployeeId()))
+                        .status(o.getStatus())
+                        .title(o.getTitle())
+                        .deliveryLatitude(o.getDeliveryLatitude())
+                        .deliveryLongitude(o.getDeliveryLongitude())
+                        .deliveryAddress(o.getDeliveryAddress())
+                        .description(o.getDescription())
+                        .build())
+                        .toList();
     }
 
     @PreAuthorize("hasAuthority('admin')")
@@ -90,7 +95,7 @@ public class OrderService {
 
     @PreAuthorize("hasAuthority('admin')")
     public ResponseEntity<String> assignCourier(String id, String orderId) {
-        employeeRepository.assignСourier("assigned", new Long(id));
+        employeeRepository.assignCourier("signed", new Long(id));
         return orderFeignClient.assignCourierToOrder(id, orderId);
     }
 

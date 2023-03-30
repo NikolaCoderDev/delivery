@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String login;
     private String role;
@@ -30,5 +30,7 @@ public class User {
     public void prePersist() {
         if(createdOn == null)
             createdOn = LocalDateTime.now();
+        if (role == null)
+            role = "user";
     }
 }

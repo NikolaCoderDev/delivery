@@ -1,6 +1,7 @@
 package com.guavaPay.employeeservice.config.jwt;
 
 import com.guavaPay.employeeservice.config.security.EmployeeDetailsServiceImpl;
+import com.guavaPay.employeeservice.config.security.userDetail.UserDetailsServiceImpl;
 import com.guavaPay.employeeservice.model.Employee;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -22,6 +23,7 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
   private final EmployeeDetailsServiceImpl employeeDetailsService;
+  private final UserDetailsServiceImpl userDetailsService;
   private final JwtUtil jwtUtil;
 
   @Override
@@ -39,21 +41,30 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     String token = header.substring(7);
     Employee employee = jwtUtil.getByJwtToken(token);
+    String email = jwtUtil.extractUsername(token);
 
-    if (employee == null) {
-      filterChain.doFilter(request, response);
-      return;
+    if (employee != null) {
+      UserDetails userDetails = employeeDetailsService.loadUserByUsername(email);
+      authenticate(userDetails, filterChain, request, response);
     }
 
-    String email = jwtUtil.extractUsername(token);
-    UserDetails userDetails = employeeDetailsService.loadUserByUsername(email);
+    if (employee == null) {
+      UserDetails userDetails = userDetailsService.loadUserByUsername(token);
+      authenticate(userDetails, filterChain, request, response);
+    }
+  }
+
+  private void authenticate(UserDetails details,
+                            FilterChain filterChain,
+                            HttpServletRequest request,
+                            HttpServletResponse response)
+          throws ServletException, IOException {
 
     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-            userDetails,
+            details,
             null,
-            userDetails.getAuthorities()
+            details.getAuthorities()
     );
-
     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
     SecurityContextHolder.getContext().setAuthentication(authToken);
     filterChain.doFilter(request, response);

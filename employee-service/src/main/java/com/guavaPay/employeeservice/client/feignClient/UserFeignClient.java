@@ -6,7 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "employee-service-to-user", url = "http://localhost:8003")
+@FeignClient(name = "employee-service-to-user", url = "${employee-service-to-user}")
 public interface UserFeignClient {
 
     @GetMapping("/{id}")

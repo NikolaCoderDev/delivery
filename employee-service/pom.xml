@@ -100,6 +100,11 @@
 			<artifactId>liquibase-maven-plugin</artifactId>
 			<version>${liquibase.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.maxmind.geoip2</groupId>
+			<artifactId>geoip2</artifactId>
+			<version>4.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -129,6 +134,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>employee-service</finalName>
 	</build>
 	<repositories>
 		<repository>

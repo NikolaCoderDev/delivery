@@ -4,12 +4,8 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8000/eureka/
-
-#eureka:
-#  client:
-#    serviceUrl:
 #      defaultZone: http://192.168.99.100:8000/eureka/
+      defaultZone: http://localhost:8000/eureka/
 
 logging:
   pattern:
@@ -17,3 +13,9 @@ logging:
 
 springdoc:
   packagesToScan: com.guavaPay.orderservice
+
+jwt:
+  secret: BvPHGM8C0ia4uOuxxqPD5DTbWC9F9TWvPStp3pb7ARo0oK2mJ3pd3YG4lxA9i8bj6OTbadwezxgeEByY
+  expiration: 86400
+
+api_key: AIzaSyDKfusCcGmhvt82rWv7GKzminYVEZJd9TU

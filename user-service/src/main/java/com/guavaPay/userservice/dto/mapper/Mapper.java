@@ -1,6 +1,7 @@
 package com.guavaPay.userservice.dto.mapper;
 
 import com.guavaPay.userservice.dto.UserDto;
+import com.guavaPay.userservice.dto.UserDtoReq;
 import com.guavaPay.userservice.model.User;
 import org.springframework.stereotype.Component;
 
@@ -33,4 +34,12 @@ public class Mapper {
                 .password(user.getPassword())
                 .build();
     }
+
+    public User mapFromUserDtoReq(UserDtoReq user) {
+        return User.builder()
+                .login(user.getLogin())
+                .password(user.getPassword())
+                .build();
+    }
+
 }

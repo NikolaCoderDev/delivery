@@ -2,12 +2,14 @@ version: "3.7"
 services:
 
   config-service:
-    image: config-service:3.0.4
+    image: niyazbek9393/config-service:3.0.4
+    restart: always
     ports:
       - "8888:8888"
 
   discovery-service:
-    image: discovery-service:3.0.4
+    image: niyazbek9393/discovery-service:3.0.4
+    restart: always
     ports:
       - "8000:8000"
     links:
@@ -27,7 +29,8 @@ services:
       - ./postgres:/data/postgres
 
   employee-service:
-    image: employee-service:3.0.4
+    image: niyazbek9393/employee-service:3.0.4
+    restart: always
     ports:
       - "8002"
     links:
@@ -51,7 +54,8 @@ services:
 
 
   order-service:
-    image: order-service:3.0.4
+    image: niyazbek9393/order-service:3.0.4
+    restart: always
     ports:
       - "8003"
     links:
@@ -77,7 +81,8 @@ services:
 
 
   user-service:
-    image: user-service:3.0.4
+    image: niyazbek9393/user-service:3.0.4
+    restart: always
     ports:
       - "8004"
     links:
@@ -91,7 +96,8 @@ services:
 
 
   gateway-service:
-    image: gateway-service:3.0.4
+    image: niyazbek9393/gateway-service:3.0.4
+    restart: always
     ports:
       - "8001:8001"
     links:

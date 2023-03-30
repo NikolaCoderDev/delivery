@@ -25,11 +25,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Modifying
     @Query(value = "update Employee set status = ? where id = ?", nativeQuery = true)
-    void assignСourier(String status, long login);
+    void assignCourier(String status, long login);
 
     @Modifying
-    @Query(value = "update Employee set latitude = ?, longitude = ?, address = ? where id = ?", nativeQuery = true)
-    void updateCourierCoordinates(String lat, String lng, String address, long login);
+    @Query(value = "update Employee set latitude = ?, longitude = ?, address = ? where ip_address = ?", nativeQuery = true)
+    void updateCourierCoordinates(String lat, String lng, String address, String ipAddress);
 
     Optional<Employee> getByAccessToken(String token);
 
