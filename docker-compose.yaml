@@ -3,13 +3,11 @@ services:
 
   config-service:
     image: niyazbek9393/config-service:3.0.4
-    restart: always
     ports:
       - "8888:8888"
 
   discovery-service:
     image: niyazbek9393/discovery-service:3.0.4
-    restart: always
     ports:
       - "8000:8000"
     links:
@@ -18,7 +16,6 @@ services:
   db_employee:
     container_name: guava_pay_employee_container
     image: postgres:13.10-bullseye
-    restart: always
     ports:
       - 5442:5432
     environment:
@@ -30,7 +27,6 @@ services:
 
   employee-service:
     image: niyazbek9393/employee-service:3.0.4
-    restart: always
     ports:
       - "8002"
     links:
@@ -42,7 +38,6 @@ services:
   db_order:
     container_name: guava_pay_order_container
     image: postgres:alpine
-    restart: always
     ports:
       - 5441:5432
     environment:
@@ -53,9 +48,15 @@ services:
       - ./postgres:/data/postgres
 
 
+  rabbitmq:
+    image: rabbitmq:3.10.7-management
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+
   order-service:
     image: niyazbek9393/order-service:3.0.4
-    restart: always
     ports:
       - "8003"
     links:
@@ -64,6 +65,7 @@ services:
       - db_employee
       - employee-service
       - db_order
+      - rabbitmq
 
 
   db_user:
@@ -82,7 +84,6 @@ services:
 
   user-service:
     image: niyazbek9393/user-service:3.0.4
-    restart: always
     ports:
       - "8004"
     links:
@@ -93,11 +94,11 @@ services:
       - db_order
       - order-service
       - db_user
+      - rabbitmq
 
 
   gateway-service:
     image: niyazbek9393/gateway-service:3.0.4
-    restart: always
     ports:
       - "8001:8001"
     links:
@@ -109,3 +110,4 @@ services:
       - order-service
       - db_user
       - user-service
+      - rabbitmq
