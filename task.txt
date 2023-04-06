@@ -1,0 +1,139 @@
+• Java 8+, Gradle (предпочтительнее) или Maven
+• Spring Boot, Spring Data JPA (используйте Postgres), Liquibase
+• Прокси-сервер/API-шлюз
+• Брокеры сообщений
+• Swagger (подробное описание API для ресурсов)
+• Модульные тесты, написанные на Spock Framework (предпочтительнее) или JUnit
+• Предоставьте подробные инструкции по развертыванию для запуска вашего решения
+• * Создайте возможность запускать службы с помощью docker compose или minikube
+• Не стесняйтесь добавлять любые дополнительные функции и методы в свою заявку, чтобы продемонстрировать свой
+опыт в написании программного обеспечения производственного класса.
+
+Ожидается, что вы создадите серверную часть веб-приложения, в то время как интерфейс будет создан другим
+разработчиком в команде.
+Чтобы сделать это, вы должны внедрить решение, которое позволяет предоставлять пользовательские истории. Это решение
+должно быть реализовано в виде архитектуры микросервиса, которая может быть развернута с использованием контейнерной технологии.
+- Разработайте архитектурную схему решения для приложения доставки посылок на основе микросервисных технологий;
+- Внедрите микроуслуги, необходимые для приложения доставки посылок, чтобы воплотить предоставленные пользователями истории в реальность;
+- - Контейнеризируйте свое микросервисное решение, чтобы его можно было легко протестировать на компьютерах других разработчиков;
+
+USER:
+
+1 Может создать учетную запись пользователя и войти в систему
+
+2 Можете создать заказ на доставку посылки
+
+3 Может изменить пункт назначения заказа на доставку посылки
+
+4 Можете отменить заказ на доставку посылки
+
+5 Можете ознакомиться с деталями доставки *
+
+6 Может видеть все заказы на доставку посылок, которые он / она создала
+
+Admin:
+
+1 Может изменить статус заказа на доставку посылки
+
+2 Можете просматривать все заказы на доставку посылок
+
+3 Можете назначить заказ на доставку посылки курьеру
+
+4 Можете войти в систему и создать учетную запись курьера
+
+5 Можете отслеживать доставку заказа по координатам (Latitude Широта / Longitude Долгота)
+
+6 Можете просмотреть список курьеров с их статусами
+
+Courier:
+
+1 Можете войти в систему
+
+2 Может просматривать все заказы на доставку посылок, которые ему назначены
+
+3 Может изменить статус заказа на доставку посылки
+
+4 Можете ознакомиться с деталями заказа на доставку *
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Order:
+ждет доставки
+доставленно
+отменено
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+https://struchkov.dev/blog/ru/build-docker-image-for-spring-boot/
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* - с JWT;
+** - определите поля самостоятельно;
+*** - определите, когда пользователь может самостоятельно изменить пункт назначения;
+**** - определите, когда пользователь может отменить заказ на доставку посылки
+самостоятельно
+
+docker build -t niyazbek9393/config-service:3.0.4 .
+
+
+
+kunaev993@gmail.com
+1993Niyazbek
+
+https://www.youtube.com/watch?v=6Ts4UdbIs-o
+https://www.youtube.com/watch?v=PfzVE3AOhJ0
+https://www.youtube.com/watch?v=2q1MlfFhWhQ&t=360s
+https://ihorkosandiak.medium.com/spring-cloud-gateway-security-with-jwt-93341b342020
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Сначало скачай базу данных: https://www.maxmind.com
+Geolite2 : https://www.youtube.com/watch?v=LyijGBs1vKQ
+ip = https://www.ipify.org/
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Роутинг без фильтра: https://www.youtube.com/watch?v=Aty83SQD8O4&t=3s
+Роутинг c фильтром: https://www.youtube.com/watch?v=PfzVE3AOhJ0
+Роутинг c фильтром и jwt: https://ihorkosandiak.medium.com/spring-cloud-gateway-security-with-jwt-93341b342020
+https://www.baeldung.com/java-json-web-tokens-jjwt
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+https://github.com/piomin/sample-spring-microservices-new
+
+Запусти команду: (mvn -e -X clean package), при этой ошибке 
+(To see the full stack trace of the errors, re-run Maven with the -e switch. [ERROR] Re-run Maven using the -X switch to enable full debug logging.)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Готовый openApi - https://github.com/springdoc/springdoc-openapi-demos/tree/master/springdoc-openapi-microservices
+
+jwt open api - https://www.baeldung.com/openapi-jwt-authentication
+
+liqubase - https://github.com/lh39/liquibase-maven-demo
+
+liqubase - https://tproger.ru/articles/migracii-baz-dannyh-s-pomoshhju-biblioteki-liquibase/
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+https://github.com/curcuna/guavapay/blob/main/gateway/src/main/java/com/guavapay/gateway/service/AuthenticationService.java
+https://github.com/veterr/guavapay-test/blob/main/auth/src/main/java/org/guavapay/delivery/rest/AuthController.java
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+http://192.168.99.100:8001/webjars/swagger-ui/index.html?urls.primaryName=employee#/Authorization%20controller/register
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+@RequestHeader
+
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2023-03-25T04:18:38Z. Current time: 2023-03-25T04:23:45Z, a difference of 307485 milliseconds.  Allowed clock skew: 0 milliseconds.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+http://192.168.99.100:8001/webjars/swagger-ui/index.html?urls.primaryName=user
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+RabbitMq docker-compose: https://habr.com/ru/company/southbridge/blog/704208/
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+employee-service_1   | org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'adminController' defined in URL [jar:file:/employee-service.jar!/BOOT-IN
+F/classes!/com/guavaPay/employeeservice/controller/AdminController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'orderService' define
+d in URL [jar:file:/employee-service.jar!/BOOT-INF/classes!/com/guavaPay/employeeservice/service/OrderService.class]: Unsatisfied dependency expressed through constructor parameter 3: Error cr
+eating bean with name 'employeeService' defined in URL [jar:file:/employee-service.jar!/BOOT-INF/classes!/com/guavaPay/employeeservice/service/EmployeeService.class]: Unsatisfied dependency ex
+pressed through constructor parameter 1: Error creating bean with name 'databaseReader' defined in class path resource [com/guavaPay/employeeservice/config/geoIp/GeoLocationConfig.class]: Fail
+ed to instantiate [com.maxmind.geoip2.DatabaseReader]: Factory method 'databaseReader' threw exception with message: Java heap space
